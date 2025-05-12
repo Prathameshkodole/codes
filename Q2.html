@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multi-Function Calculator - Q2</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    h2 { color: #333; }
+    input, select, button {
+      padding: 8px; margin: 5px 0; width: 200px;
+    }
+    .section { margin-bottom: 30px; }
+    .result { font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>Multi-Function Calculator</h1>
+
+  <!-- Basic Calculator -->
+  <div class="section">
+    <h2>1. Basic Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number"><br>
+
+    <button onclick="calculate('add')">Add</button>
+    <button onclick="calculate('sub')">Subtract</button>
+    <button onclick="calculate('mul')">Multiply</button>
+    <button onclick="calculate('div')">Divide</button>
+
+    <div class="result" id="calcResult"></div>
+  </div>
+
+  <!-- Celsius to Fahrenheit -->
+  <div class="section">
+    <h2>2. Celsius to Fahrenheit</h2>
+    <input type="number" id="celsius" placeholder="Enter Celsius">
+    <button onclick="convertToFahrenheit()">Convert</button>
+    <div class="result" id="fahrenheitResult"></div>
+  </div>
+
+  <!-- Currency Converter -->
+  <div class="section">
+    <h2>3. Currency Converter (USD to)</h2>
+    <input type="number" id="usd" placeholder="Amount in USD">
+    <select id="currency">
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="INR">INR</option>
+    </select>
+    <button onclick="convertCurrency()">Convert</button>
+    <div class="result" id="currencyResult"></div>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="Q2.js"></script>
+
+</body>
+</html>

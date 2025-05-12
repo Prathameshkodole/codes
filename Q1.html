@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    label { display: block; margin-top: 10px; }
+    input[type="text"], input[type="email"], input[type="date"] {
+      width: 250px; padding: 8px; margin-top: 5px;
+    }
+    .error { color: red; margin-top: 10px; }
+    button { margin-top: 20px; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+
+  <h2>Student Registration Form</h2>
+
+  <form id="studentForm" onsubmit="return validateForm()">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone">
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
+
+    <div class="error" id="errorMsg"></div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const dob = document.getElementById("dob").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      errorMsg.textContent = "";
+
+      // Check all fields filled
+      if (!name || !email || !phone || !dob) {
+        errorMsg.textContent = "Please fill in all fields.";
+        return false;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = "Please enter a valid email address.";
+        return false;
+      }
+
+      // Phone number validation (10 digits)
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(phone)) {
+        errorMsg.textContent = "Phone number must be 10 digits.";
+        return false;
+      }
+
+      // Age validation (at least 18 years)
+      const dobDate = new Date(dob);
+      const today = new Date();
+      const age = today.getFullYear() - dobDate.getFullYear();
+      const m = today.getMonth() - dobDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
+        age--;
+      }
+
+      if (age < 18) {
+        errorMsg.textContent = "You must be at least 18 years old.";
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>

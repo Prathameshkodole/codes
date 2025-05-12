@@ -1,0 +1,17 @@
+CREATE DATABASE company;
+
+USE company;
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    department VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+-- Example data
+INSERT INTO employees (first_name, last_name, department, salary)
+VALUES ('John', 'Doe', 'HR', 50000),
+       ('Jane', 'Smith', 'IT', 60000),
+       ('Bob', 'Johnson', 'Finance', 55000);
